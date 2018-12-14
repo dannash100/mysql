@@ -6,6 +6,7 @@ on unix check process with ```ps aux | grep mysql``` if instance of mysql not ru
 shell ```mysql -u root -p -e```
 
 ## New User
+
 ```mysql
 CREATE USER 'new_user'@'localhost' IDENTIFIED BY 'new_password';
 GRANT ALL PRIVILEGES ON dbTest.* To 'user'@'hostname' IDENTIFIED BY 'password';

@@ -20,7 +20,7 @@ grant all privleges:
 ```mysql
 GRANT ALL ON *.* TO 'user'@'localhost';
 ```
-view privleges
+view privleges:
 ```mysql
 SHOW GRANTS FOR 'user'@'localhost';
 ```

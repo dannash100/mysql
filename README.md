@@ -28,19 +28,26 @@ SHOW GRANTS FOR 'user'@'localhost';
 
 ## exploring databases
 
-```CREATE DATABASE name;```
+```mysql
+CREATE DATABASE name;
+```
 
-```SHOW DATABASES;``` to view all
+```mysqlSHOW DATABASES;
+``` to view all
   - information_schema: server information
   - mysql: user-names, passwords and privileges
 
-set default: ```USE name```
+set default: ```mysql
+USE name
+```
 
 ## tables
 
 new: ```CREATE TABLE database_name.table_name (field_name DATA_TYPE, field_name DATA_TYPE...);```
 show: ```SHOW TABLES FROM database_name```
 show fields: ```DESCRIBE books```
+
+
 ## variables
 
 ```mysql

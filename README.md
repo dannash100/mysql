@@ -58,6 +58,23 @@ show fields:
 DESCRIBE books
 ```
 
+## data
+
+insert:
+```mysql
+INSERT INTO table_name VALUES(id, name, status)
+```
+
+```\G``` will present data in a batch of lines for each record format
+select:
+```mysql
+SELECT * FROM table WHERE? field = val
+```
+
+update:
+```mysql
+UPDATE table SET field = val, field = val WHERE id = val;
+```
 
 ## variables
 

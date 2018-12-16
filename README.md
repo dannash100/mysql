@@ -35,12 +35,11 @@ CREATE DATABASE name;
 ```mysql
 SHOW DATABASES;
 ```
+- information_schema: server information
+- mysql: user-names, passwords and privileges
 
-to view all
-  - information_schema: server information
-  - mysql: user-names, passwords and privileges
-
-set default: ```mysql
+set default:
+```mysql
 USE name
 ```
 

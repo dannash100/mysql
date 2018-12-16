@@ -32,8 +32,11 @@ SHOW GRANTS FOR 'user'@'localhost';
 CREATE DATABASE name;
 ```
 
-```mysqlSHOW DATABASES;
-``` to view all
+```mysql
+SHOW DATABASES;
+```
+
+to view all
   - information_schema: server information
   - mysql: user-names, passwords and privileges
 
@@ -43,9 +46,18 @@ USE name
 
 ## tables
 
-new: ```CREATE TABLE database_name.table_name (field_name DATA_TYPE, field_name DATA_TYPE...);```
-show: ```SHOW TABLES FROM database_name```
-show fields: ```DESCRIBE books```
+new:
+```mysql
+CREATE TABLE database_name.table_name (field_name DATA_TYPE, field_name DATA_TYPE...);
+```
+show:
+```mysql
+SHOW TABLES FROM database_name
+```
+show fields:
+```mysql
+DESCRIBE books
+```
 
 
 ## variables

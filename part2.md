@@ -2,6 +2,8 @@
 
 ### part 2. database structures
 
+#### chapter 4
+
 1. I mentioned in this chapter that we might want to store data related to identifying birds. Instead of putting that data in the birds table, create a table for that data, which will be a reference table. Try creating that table with the CREATE TABLE statement. Name it birds_wing_shapes. Give it three columns: the first column should be named wing_id with a data type of CHAR with the maximum character width set to 2. Make that column the index, as a UNIQUE key, but not an AUTO_INCREMENT. We’ll enter two-letter codes manually to identify each row of data a feasible task because there will be probably only six rows of data in this table. Name the second column wing_shape and set its data type to CHAR with the maximum character width set to 25. This will be used to describe the type of wings a bird may have (e.g., tapered wings). The third column should be called wing_example and make it a BLOB column for storing example images of the shapes of wings.
 
 ```mysql

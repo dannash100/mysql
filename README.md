@@ -26,7 +26,6 @@ restore *note: use mysql not mysqldump*
 mysql --user='dannash100' -p \
 database_name < backup.sql
 ```
-ALTER TABLE birds_new CHANGE endangered endangered ENUM('Extinct', 'Extinct in Wild', 'Threatened - Critically Endangered', 'Threatened - Endangered', 'Threatened - Vulnerable', 'Lower Risk - Conservation Dependent', 'Lower Risk - Near Threatened', 'Lower Risk - Least Concern') AFTER family_id;
 
 ---
 

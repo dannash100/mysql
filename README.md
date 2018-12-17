@@ -3,7 +3,7 @@ detailed look into mysql
 
 on unix check process with ```ps aux | grep mysql``` if instance of mysql not running ```/usr/bin/mysqld_safe &``` to start mysql daemon
 
-shell ```mysql -u username -p```
+open MySQL prompt: ```mysql -u username -p```
 set custom prompt to display default database ```prompt mysql \d ->\_```
 
 ---
@@ -94,15 +94,31 @@ SHOW CREATE TABLE name \G
 ```
 
 
-#### add/remove column
+#### add/remove/edit column
 ```mysql
 ALTER TABLE name
-ADD COLUMN column_name column_definition,
+ADD COLUMN column_name column_definition AFTER column_to_fall_after,
 ADD COLUMN column_name column_definition,
 ...;
-
-ALTER TABLE table
+ALTER TABLE name
 DROP COLUMN column_name;
+
+ALTER TABLE name
+CHANGE COLUMN column_name new_name NEW_TYPE;
+
+```
+
+
+
+#### copy table
+1st method is preferred as it copies table settings.
+```mysql
+CREATE TABLE new_table like table_to_copy;
+
+INSERT INTO new_table
+SELECT * FROM table_to_copy;
+
+CREATE TABLE new_table SELECT * FROM table_to_copy;
 ```
 
 ---
@@ -154,6 +170,9 @@ SELECT * FROM table WHERE? field = val
 #### update
 ```mysql
 UPDATE table SET field = val, field = val WHERE id = val;
+
+UPDATE table SET field = val, field = val WHERE id IN(val, val, val, val);
+
 ```
 
 #### join
@@ -166,15 +185,36 @@ WHERE status = status_id;
 -  specify tables to join
 -  match values of status column from books to the values of status_id column from status_names table
 
-#### chaining where clauses
-```mysql
-AND field = value
-```
-for example to add an extra clause after a table join:
+#### where/wherenot
+
+add an extra clause after a table join:
 ```mysql
 FROM table JOIN table2
 WHERE table.id = table2.id
 AND field = value;
 ```
 
+select all where not
+```mysql
+SELECT * from table_name
+WHERE NOT field = val;
+```
 
+### data precautions
+
+#### mysqldump
+- utility to make backup of tables
+- database name is given then optionally followed by a table name.
+- (>) tells the shell to send results of the dump to text file table_name.sql
+
+backup
+```console
+mysqldump --user='dannash100' -p \
+database_name table_name > ~/tmp/backup.sql
+```
+
+restore *note: use mysql not mysqldump*
+```console
+mysql --user='dannash100' -p \
+database_name < backup.sql
+```

@@ -147,13 +147,12 @@ SELECT * FROM relation_types;
 SELECT name, email FROM contacts
 ```
 
-4. Change some of the data entered in the previous exercises, using the UPDATE state‐ ment. If you don’t remember how to do that, refer back to the examples in this chapter on how to change data in a table. First, change someone’s name or telephone number. Next, change someone’s email address and his or her relationship to you (i.e., relation_id). Do this in one UPDATE statement.
+4. Change some of the data entered in the previous exercises, using the UPDATE statement. If you don’t remember how to do that, refer back to the examples in this chapter on how to change data in a table. First, change someone’s name or telephone number. Next, change someone’s email address and his or her relationship to you (i.e., relation_id). Do this in one UPDATE statement.
 
 ```mysql
-SELECT * FROM contacts;
-SELECT * FROM relation_types;
+UPDATE contacts SET name = "Dan Nash" Where id = 100;
 
-SELECT name, email FROM contacts
+UPDATE contacts SET email = "danster15@gmail.com", relation_id = 3 WHERE id = 100;
 ```
 
 ### chapter 2

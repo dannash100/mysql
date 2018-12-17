@@ -6,6 +6,7 @@ on unix check process with ```ps aux | grep mysql``` if instance of mysql not ru
 shell ```mysql -u username -p```
 set custom prompt to display default database ```prompt mysql \d ->\_```
 
+---
 
 ## users & privileges
 
@@ -36,6 +37,8 @@ SHOW VARIABLES LIKE 'variable_name';
 SET GLOBAL variable_name = 6;
 ```
 
+---
+
 
 ## exploring databases
 
@@ -61,6 +64,8 @@ SHOW DATABASES;
 ```mysql
 USE name
 ```
+
+---
 
 ## exploring tables
 
@@ -94,15 +99,23 @@ ALTER TABLE table
 DROP COLUMN column_name;
 ```
 
+---
+
 ## data
 
-#### types and indexing
+### types and indexing
 
-##### VARCHAR vs CHAR
+#### VARCHAR vs CHAR
 - if storage engine knows exactly what to expect from a column tables run faster can be indexed easier with CHAR
 - when the width varies use VARCHAR - storage engine will reduce size of the column based on width
 
-common auto incrementing id field
+#### large strings
+- use TEXT to hold up to 65,535 bytes of data
+
+#### null values
+- null setting indicates whether each field may contain NULL values.
+
+#### common settings
 ```mysql
 id INT AUTO_INCREMENT PRIMARY KEY
 ```
@@ -110,6 +123,8 @@ id INT AUTO_INCREMENT PRIMARY KEY
 ```mysql
 name VARCHAR(255) UNIQUE
 ```
+
+### interacting with data
 
 #### insert
 ```mysql

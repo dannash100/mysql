@@ -8,6 +8,28 @@ set custom prompt to display default database ```prompt mysql \d ->\_```
 
 ---
 
+### data precautions
+
+#### mysqldump
+- utility to make backup of tables
+- database name is given then optionally followed by a table name.
+- (>) tells the shell to send results of the dump to text file table_name.sql
+
+backup
+```console
+mysqldump --user='dannash100' -p \
+database_name table_name > ~/tmp/backup.sql
+```
+
+restore *note: use mysql not mysqldump*
+```console
+mysql --user='dannash100' -p \
+database_name < backup.sql
+```
+ALTER TABLE birds_new CHANGE endangered endangered ENUM('Extinct', 'Extinct in Wild', 'Threatened - Critically Endangered', 'Threatened - Endangered', 'Threatened - Vulnerable', 'Lower Risk - Conservation Dependent', 'Lower Risk - Near Threatened', 'Lower Risk - Least Concern') AFTER family_id;
+
+---
+
 ## users & privileges
 
 #### new user
@@ -217,23 +239,5 @@ SELECT * from table_name
 WHERE NOT field = val;
 ```
 
-### data precautions
 
-#### mysqldump
-- utility to make backup of tables
-- database name is given then optionally followed by a table name.
-- (>) tells the shell to send results of the dump to text file table_name.sql
-
-backup
-```console
-mysqldump --user='dannash100' -p \
-database_name table_name > ~/tmp/backup.sql
-```
-
-restore *note: use mysql not mysqldump*
-```console
-mysql --user='dannash100' -p \
-database_name < backup.sql
-```
-ALTER TABLE birds_new CHANGE endangered endangered ENUM('Extinct', 'Extinct in Wild', 'Threatened - Critically Endangered', 'Threatened - Endangered', 'Threatened - Vulnerable', 'Lower Risk - Conservation Dependent', 'Lower Risk - Near Threatened', 'Lower Risk - Least Concern') AFTER family_id;
 

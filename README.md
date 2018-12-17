@@ -127,6 +127,11 @@ CREATE TABLE new_table SELECT * FROM table_to_copy;
 
 ### types and indexing
 
+#### ENUMS
+```mysql
+ENUM('option', 'option'...)
+```
+
 #### VARCHAR vs CHAR
 - if storage engine knows exactly what to expect from a column tables run faster can be indexed easier with CHAR
 - when the width varies use VARCHAR - storage engine will reduce size of the column based on width
@@ -153,6 +158,18 @@ if names include characters not part of default latin1 char set
 ```mysql
 CREATE TABLE table_name ( fields ) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 ```
+
+### modify/change fields
+
+change type w/o rename
+```mysql
+ALTER TABLE t1 MODIFY col1 BIGINT;
+```
+change with rename
+```mysql
+ALTER TABLE t1 CHANGE a b BIGINT NOT NULL;
+```
+
 
 ### interacting with data
 
@@ -218,3 +235,5 @@ restore *note: use mysql not mysqldump*
 mysql --user='dannash100' -p \
 database_name < backup.sql
 ```
+ALTER TABLE birds_new CHANGE endangered endangered ENUM('Extinct', 'Extinct in Wild', 'Threatened - Critically Endangered', 'Threatened - Endangered', 'Threatened - Vulnerable', 'Lower Risk - Conservation Dependent', 'Lower Risk - Near Threatened', 'Lower Risk - Least Concern') AFTER family_id;
+

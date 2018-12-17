@@ -4,7 +4,8 @@ detailed look into mysql
 on unix check process with ```ps aux | grep mysql``` if instance of mysql not running ```/usr/bin/mysqld_safe &``` to start mysql deamon
 
 shell ```mysql -u username -p```
-set custom prompt to display default database ```prompt mysql(\d) ->\_```
+set custom prompt to display default database ```prompt mysql \d ->\_```
+
 
 ## users & privileges
 
@@ -38,8 +39,17 @@ SET GLOBAL variable_name = 6;
 
 ## exploring databases
 
+#### create/remove
 ```mysql
-CREATE DATABASE name;
+CREATE DATABASE name
+CHARACTER SET latin1
+COLLATE latin1_bin;
+```
+- set default characters
+- set default method of sorting data in tables based on binary latin characters
+
+```mysql
+DROP DATABASE name;
 ```
 ```mysql
 SHOW DATABASES;
@@ -47,12 +57,16 @@ SHOW DATABASES;
 - information_schema: server information
 - mysql: user-names, passwords and privileges
 
-#### set default table
+#### set default database
 ```mysql
 USE name
 ```
 
 ## exploring tables
+
+- the specification of fields and columns of a table is referred to as its schema
+- when using CHAR or VARCHAR data types a maximum length must be specified otherwise it will default at 1
+- columns may also specify how the data is indexed
 
 #### create
 ```mysql
@@ -69,20 +83,33 @@ show fields:
 DESCRIBE books
 ```
 
-#### add column
+#### add/remove column
 ```mysql
 ALTER TABLE name
 ADD COLUMN column_name column_definition,
 ADD COLUMN column_name column_definition,
 ...;
-```
-#### remove column
-```mysql
+
 ALTER TABLE table
 DROP COLUMN column_name;
 ```
 
 ## data
+
+#### types and indexing
+
+##### VARCHAR vs CHAR
+- if storage engine knows exactly what to expect from a column tables run faster can be indexed easier with CHAR
+- when the width varies use VARCHAR - storage engine will reduce size of the column based on width
+
+common auto incrementing id field
+```mysql
+id INT AUTO_INCREMENT PRIMARY KEY
+```
+
+```mysql
+name VARCHAR(255) UNIQUE
+```
 
 #### insert
 ```mysql

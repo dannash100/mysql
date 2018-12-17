@@ -1,6 +1,6 @@
 ## exercises
 
-### chapter 1
+### part 1. the software
 
 1. Log into MySQL or MariaDB using the mysql client and switch the default database to the database, test. Create two tables called contacts and relation_types. For both tables, use column type INT for number columns and CHAR for character columns. Specify the maximum number of characters you want with CHAR—otherwise MySQL wills set a maximum of one character, which is not very useful. Make sure that you allow for enough characters to fit the data you will enter later. If you want to allow characters between numbers (e.g., hyphens for a telephone number), use CHAR. For the contacts, you will need six columns: name, phone_work, phone_mobile, email, relation_id. For the relation_types table, there should be only two columns: relation_id and relationship.
 When you’re finished creating both tables, use the DESCRIBE statement to see how they look.

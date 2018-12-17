@@ -118,6 +118,9 @@ DROP COLUMN column_name;
 #### large strings
 - use TEXT to hold up to 65,535 bytes of data
 
+#### image files
+- use BLOB or binary large object to store image file such as jpeg, although it is preferable to store image files on a server, or as a url address in the database.
+
 #### null values
 - null setting indicates whether each field may contain NULL values.
 
@@ -128,6 +131,11 @@ id INT AUTO_INCREMENT PRIMARY KEY
 
 ```mysql
 name VARCHAR(255) UNIQUE
+```
+
+if names include characters not part of default latin1 char set
+```mysql
+CREATE TABLE table_name ( fields ) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 ```
 
 ### interacting with data

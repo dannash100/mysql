@@ -1,7 +1,7 @@
 # mysql
 detailed look into mysql
 
-on unix check process with ```ps aux | grep mysql``` if instance of mysql not running ```/usr/bin/mysqld_safe &``` to start mysql deamon
+on unix check process with ```ps aux | grep mysql``` if instance of mysql not running ```/usr/bin/mysqld_safe &``` to start mysql daemon
 
 shell ```mysql -u username -p```
 set custom prompt to display default database ```prompt mysql \d ->\_```
@@ -87,6 +87,12 @@ show fields:
 ```mysql
 DESCRIBE books
 ```
+
+show information specified in table creation:
+```mysql
+SHOW CREATE TABLE name \G
+```
+
 
 #### add/remove column
 ```mysql

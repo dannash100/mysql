@@ -130,8 +130,6 @@ CHANGE COLUMN column_name new_name NEW_TYPE;
 
 ```
 
-
-
 #### copy table
 1st method is preferred as it copies table settings.
 ```mysql

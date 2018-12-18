@@ -146,10 +146,24 @@ CREATE TABLE new_table SELECT * FROM table_to_copy;
 
 ### types and indexing
 
+#### view columns in detail
+```mysql
+SHOW COLUMNS FROM tab LIKE 'col' \G
+```
+
+#### default values
+```mysql
+INT DEFAULT 8;
+
+ALTER TABLE tab
+AlTER col SET DEFAULT 7;
+```
+
 #### ENUMS
 ```mysql
 ENUM('option', 'option'...)
 ```
+first value is index 1
 
 #### VARCHAR vs CHAR
 - if storage engine knows exactly what to expect from a column tables run faster can be indexed easier with CHAR

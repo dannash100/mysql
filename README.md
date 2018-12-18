@@ -99,6 +99,13 @@ USE name
 CREATE TABLE database_name.table_name (field_name DATA_TYPE, field_name DATA_TYPE...);
 ```
 
+#### create with copied columns
+```mysql
+CREATE TABLE tab_name
+SELECT col, col2
+FROM tab_to_copy_from
+```
+
 #### show
 ```mysql
 SHOW TABLES FROM database_name
@@ -132,7 +139,7 @@ CHANGE COLUMN column_name new_name NEW_TYPE;
 #### copy table
 1st method is preferred as it copies table settings.
 ```mysql
-CREATE TABLE new_table like table_to_copy;
+CREATE TABLE new_table LIKE table_to_copy;
 
 INSERT INTO new_table
 SELECT * FROM table_to_copy;
@@ -157,6 +164,8 @@ INT DEFAULT 8;
 
 ALTER TABLE tab
 AlTER col SET DEFAULT 7;
+ALTER col DROP DEFAULT;
+
 ```
 
 #### ENUMS
@@ -250,5 +259,11 @@ SELECT * from table_name
 WHERE NOT field = val;
 ```
 
+#### order
+
+```mysql
+SELECT * FROM tab
+ORDER BY col;
+```
 
 

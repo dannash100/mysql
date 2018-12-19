@@ -212,7 +212,6 @@ change with rename
 ALTER TABLE t1 CHANGE a b BIGINT NOT NULL;
 ```
 
-
 ### interacting with data
 
 #### insert
@@ -265,5 +264,26 @@ WHERE NOT field = val;
 SELECT * FROM tab
 ORDER BY col;
 ```
+
+#### indexes
+
+also referred to as keys - indexes are used by mysql to locate data quickly. Indexs derive from referenced columns and allow mysql to search more efficiently for data than sequentially processing the entries of a table.
+
+if you try to use ALTER TABLE on a column that is indexed you will get an error message.
+use:
+```mysql
+ALTER TABLE tab
+DROP PRIMARY KEY
+CHANGE old_name new_name INT PRIMARY KEY AUTO_INCREMENT;
+```
+
+```mysql
+Alter TABLE tab
+ADD INDEX idx_name (col_to_index, col_to_index);
+
+SHOW INDEX FROM tab
+WHERE Key_name = 'idx_name' \G
+```
+
 
 

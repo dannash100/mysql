@@ -52,3 +52,39 @@ CREATE TABLE bird_bill_shapes (
 SHOW CREATE TABLE bird_body_shapes;
 SHOW CREATE TABLE bird_bill_shapes;
 ```
+
+#### chapter 5
+
+1. Earlier in this chapter, we created a table called birds_details. We created the table with two columns: bird_id and description. We took these two columns from the birds table. Our intention in creating this table was to add columns to store a description of each bird, notes about migratory patterns, areas in which they can be found, and other information helpful in locating each bird in the wild. Let’s add a couple of columns for capturing some of that information.
+Using the ALTER TABLE statement, alter the birds_details table. In one SQL statement, add two columns named migrate and bird_feeder, making them both integer (INT) columns. These will contain values of 1 or 0 (i.e., Yes or No). In the same SQL statement, using the CHANGE COLUMN clause, change the name of the column, description to bird_description.
+When you’re finished altering the table, run the SHOW CREATE TABLE statement for this table to see the results.
+
+```mysql
+ALTER TABLE birds_details
+ADD migrate INT(1), ADD bird_feeder INT(1)
+CHANGE description bird_description TEXT;
+
+SHOW CREATE TABLE birds_details \G
+```
+
+2. Using the CREATE TABLE statement, create a new reference table named, habi tat_codes. Create this table with two columns: name the first column habi tat_id and make it a primary key using AUTO_INCREMENT and the column type of INT. Name the second column habitat and use the data type VARCHAR(25). Enter the following SQL statement to add data to the table:
+```mysql
+INSERT INTO habitat_codes (habitat) VALUES('Coasts'), ('Deserts'), ('Forests'), ('Grasslands'), ('Lakes, Rivers, Ponds'), ('Marshes, Swamps'), ('Mountains'), ('Oceans'), ('Urban');
+```
+Execute a SELECT statement for the table to confirm that the data was entered correctly. It should look like this:
+    +------------+----------------------+
+    | habitat_id | habitat              |
+    +------------+----------------------+
+    |          1 | Coasts               |
+    |          2 | Deserts              |
+    |          3 | Forests              |
+    |          4 | Grasslands           |
+    |          5 | Lakes, Rivers, Ponds |
+    |          6 | Marshes, Swamps      |
+    |          7 | Mountains            |
+    |          8 | Oceans               |
+    |          9 | Urban                |
+    +------------+----------------------+
+Create a second table named bird_habitats. Name the first column bird_id and the second column habitat_id. Set the column type for both of them to INT. Don’t make either column an indexed column.
+When you’re finished creating both of these tables, execute the DESCRIBE and SHOW CREATE TABLE statements for each of the two tables. Notice what information is presented by each statement, and familiarize yourself with the structure of each table and the components of each column.
+Use the RENAME TABLE statement to rename the bird_habitats to birds_habitats (i.e., make bird plural). This SQL statement was covered in “Renaming a Table” on page 77.

@@ -112,3 +112,30 @@ SELECT bird_id, common_name FROM birds;
 SELECT * FROM habitat_codes;
 ```
   The results of the first SELECT statement should show you a row for a loon and one for a duck, along with some other birds. Both the loon and the duck can be found in lakes, but ducks can also be found in marshes. So enter one row for the loon and two rows for the duck in the birds_habitats table. Give the value of the bird_id for the loon, and the value of habitat_id for Lakes, Rivers, Ponds. Then enter a row giving the bird_id for the duck, and the value again of the habitat_id for lakes. Then enter a third row giving again the bird_id for the duck and this time the habitat_id for Marshes, Swamps. If you created the index properly, you should not get an error about duplicate entries. When you’re done, execute the SELECT statement to see all of the values of the table.
+
+```mysql
+ALTER TABLE birds_habitats
+ADD UNIQUE birds_habitats(bird_id, habitat_id);
+
+INSERT INTO birds_habitats VALUES (2, 5), (3, 5), (3, 6);
+
+SELECT * FROM birds_habitats;
+```
+
+4. Using the ALTER TABLE statement, change the name of the index you created for birds_habitats in the previous exercise (this was covered near the end of this chapter). The index is now called birds_habitats. Rename it to bird_habitat.
+
+```mysql
+ALTER TABLE birds_habitats
+RENAME INDEX birds_habitats TO bird_habitat;
+
+SHOW CREATE TABLE birds_habitats \G;
+```
+
+5. Using the ALTER TABLE statement again, add three columns to the humans table in the birdwatchers database. Use a single ALTER TABLE statement to add all three of these columns. Add one column named country_id to contain two-character codes representing the country where each member is located. Add another column named membership_type with enumerated values of basic and premium. Add a third column named membership_expiration with a data type of DATE so that we can track when the membership of premium members will expire. These members will have special privileges on the site and discounts for items that we sell related to bird-watching.
+
+```mysql
+ALTER TABLE humans
+ADD country_id CHAR(2),
+ADD membership_type ENUM('Basic', 'Premium'),
+ADD membership_expiration DATE;
+```

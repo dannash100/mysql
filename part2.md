@@ -72,19 +72,20 @@ SHOW CREATE TABLE birds_details \G
 INSERT INTO habitat_codes (habitat) VALUES('Coasts'), ('Deserts'), ('Forests'), ('Grasslands'), ('Lakes, Rivers, Ponds'), ('Marshes, Swamps'), ('Mountains'), ('Oceans'), ('Urban');
 ```
 Execute a SELECT statement for the table to confirm that the data was entered correctly. It should look like this:
-    +------------+----------------------+
-    | habitat_id | habitat              |
-    +------------+----------------------+
-    |          1 | Coasts               |
-    |          2 | Deserts              |
-    |          3 | Forests              |
-    |          4 | Grasslands           |
-    |          5 | Lakes, Rivers, Ponds |
-    |          6 | Marshes, Swamps      |
-    |          7 | Mountains            |
-    |          8 | Oceans               |
-    |          9 | Urban                |
-    +------------+----------------------+
+
+| habitat_id    | habitat       | 
+| ------------- |:-------------:| 
+| 1     | Coasts | 
+| 2      | Deserts      |   
+| 3 | Forests      |  
+| 4 | Grasslands |
+| 5 | Lakes, Rivers, Ponds | 
+| 6 | Marshes, Swamps |
+| 7 | Mountains |
+| 8 | Oceans |
+| 9 | Urban |
+
+
 Create a second table named bird_habitats. Name the first column bird_id and the second column habitat_id. Set the column type for both of them to INT. Don’t make either column an indexed column.
 When you’re finished creating both of these tables, execute the DESCRIBE and SHOW CREATE TABLE statements for each of the two tables. Notice what information is presented by each statement, and familiarize yourself with the structure of each table and the components of each column.
 Use the RENAME TABLE statement to rename the bird_habitats to birds_habitats (i.e., make bird plural). This SQL statement was covered in “Renaming a Table” on page 77.

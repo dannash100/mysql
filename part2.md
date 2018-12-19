@@ -67,7 +67,7 @@ CHANGE description bird_description TEXT;
 SHOW CREATE TABLE birds_details \G
 ```
 
-2. Using the CREATE TABLE statement, create a new reference table named, habi tat_codes. Create this table with two columns: name the first column habi tat_id and make it a primary key using AUTO_INCREMENT and the column type of INT. Name the second column habitat and use the data type VARCHAR(25). Enter the following SQL statement to add data to the table:
+2. Using the CREATE TABLE statement, create a new reference table named, habitat_codes. Create this table with two columns: name the first column habi tat_id and make it a primary key using AUTO_INCREMENT and the column type of INT. Name the second column habitat and use the data type VARCHAR(25). Enter the following SQL statement to add data to the table:
 ```mysql
 INSERT INTO habitat_codes (habitat) VALUES('Coasts'), ('Deserts'), ('Forests'), ('Grasslands'), ('Lakes, Rivers, Ponds'), ('Marshes, Swamps'), ('Mountains'), ('Oceans'), ('Urban');
 ```
@@ -88,3 +88,27 @@ Execute a SELECT statement for the table to confirm that the data was entered co
 Create a second table named bird_habitats. Name the first column bird_id and the second column habitat_id. Set the column type for both of them to INT. Don’t make either column an indexed column.
 When you’re finished creating both of these tables, execute the DESCRIBE and SHOW CREATE TABLE statements for each of the two tables. Notice what information is presented by each statement, and familiarize yourself with the structure of each table and the components of each column.
 Use the RENAME TABLE statement to rename the bird_habitats to birds_habitats (i.e., make bird plural). This SQL statement was covered in “Renaming a Table” on page 77.
+
+```mysql
+CREATE TABLE habitat_codes (
+  habitat_id INT AUTO_INCREMENT PRIMARY KEY,
+  habitat VARCHAR(25)
+);
+
+CREATE TABLE bird_habitats (
+  bird_id INT,
+  habitat_id INT
+);
+
+ALTER TABLE bird_habitats
+RENAME birds_habitats;
+```
+
+3. Using the ALTER TABLE statement, add an index based on both bird_id and the habitat_id columns combined (this was covered in “Indexes” on page 80). Instead of using the INDEX keyword, use UNIQUE so that duplicates are not allowed. Call the index birds_habitats.
+Execute the SHOW CREATE TABLE statement for this table when you’re finished altering it.
+At this point, you should enter some data in the birds_habitats table. Execute these two SELECT statements, to see what data you have in the birds and habitat_codes tables:
+```mysql
+SELECT bird_id, common_name FROM birds;
+SELECT * FROM habitat_codes;
+```
+The results of the first SELECT statement should show you a row for a loon and one for a duck, along with some other birds. Both the loon and the duck can be found in lakes, but ducks can also be found in marshes. So enter one row for the loon and two rows for the duck in the birds_habitats table. Give the value of the bird_id for the loon, and the value of habitat_id for Lakes, Rivers, Ponds. Then enter a row giving the bird_id for the duck, and the value again of the habitat_id for lakes. Then enter a third row giving again the bird_id for the duck and this time the habitat_id for Marshes, Swamps. If you created the index properly, you should not get an error about duplicate entries. When you’re done, execute the SELECT statement to see all of the values of the table.

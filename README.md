@@ -57,8 +57,17 @@ SHOW GRANTS FOR 'user'@'localhost';
 SHOW VARIABLES LIKE 'variable_name';
 SET GLOBAL variable_name = 6;
 ```
-
 ---
+
+## performance
+
+#### priorities
+
+change priority of an insert from default high to low:
+```mysql
+INSERT LOW_PRIORITY INTO tab
+```
+
 
 
 ## exploring databases
@@ -239,9 +248,9 @@ SELECT book_id, title, status_name
 FROM books JOIN status_names
 WHERE status = status_id;
 ```
--  name specific columns between two tables
--  specify tables to join
--  match values of status column from books to the values of status_id column from status_names table
+- name specific columns between two tables
+- specify tables to join
+- match values of status column from books to the values of status_id column from status_names table
 
 #### where/wherenot
 

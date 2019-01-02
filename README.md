@@ -324,5 +324,3 @@ COMMIT;
 
 *note: transactions are heavy on performance*
 
-#### isolation levels
-\

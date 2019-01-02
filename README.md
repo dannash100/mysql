@@ -252,7 +252,21 @@ WHERE status = status_id;
 - specify tables to join
 - match values of status column from books to the values of status_id column from status_names table
 
-#### where/wherenot
+
+or without JOIN keyword
+```mysql
+SELECT col AS 'alias', tab2.col2 AS 'alias'
+FROM tab1, tab2
+WHERE tab1.join_id = tab2.join_id
+```
+
+#### where
+
+where multiple values
+```mysql
+SELECT * FROM tab
+WHERE col IN(val1, val2, val3, val4)
+```
 
 add an extra clause after a table join:
 ```mysql
@@ -295,4 +309,20 @@ WHERE Key_name = 'idx_name' \G
 ```
 
 
+#### transactions
 
+a group of sql queries treated as a single unit of work. If any of the operations fail none will apply.
+make changes permanent with ```COMMIT``` or discard with ```ROLLBACK```
+
+```mysql
+START TRANSACTION
+SELECT col FROM tab WHERE id = val
+UPDATE col SET val = val + 200 WHERE id = val
+UPDATE col2 SET val = val - 200 WHERE id = val
+COMMIT;
+```
+
+*note: transactions are heavy on performance*
+
+#### isolation levels
+\

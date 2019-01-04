@@ -242,6 +242,16 @@ UPDATE table SET field = val, field = val WHERE id IN(val, val, val, val);
 
 ```
 
+#### aliases
+
+use as to create aliases in SELECT and FROM
+```mysql
+SELECT common_name AS 'Bird',
+    families.scientific_name AS 'Family',
+    orders.scientific_name AS 'Order'
+    FROM birds, bird_families AS families, bird_orders AS orders
+```
+
 #### join
 ```mysql
 SELECT book_id, title, status_name
@@ -280,6 +290,24 @@ select all where not
 SELECT * from table_name
 WHERE NOT field = val;
 ```
+
+#### like
+
+select multiple names that are similar
+
+search instances of name and followed by anything (wildcard)
+```mysql
+SELECT * FROM tab
+WHERE col LIKE 'name%'
+```
+
+search by regex *optional BINARY to make search case sensitive*
+```mysql
+SELECT * FROM tab
+WHERE col [NOT] REGEXP [BINARY] 'name|name2'
+```
+
+
 
 #### order
 

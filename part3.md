@@ -133,4 +133,20 @@ FROM birds
 WHERE common_name != ""
 ORDER BY common_name
 LIMIT 25
+
+SELECT orders.scientific_name AS 'Order', orders.brief_description AS 'Types of Birds',
+common_name AS 'Common Name of Bird', birds.scientific_name as 'Scientific Name of Bird'
+FROM birds, bird_orders as orders, bird_families as families
+WHERE birds.family_id = families.family_id
+AND families.order_id = orders.order_id
+AND common_name != ""
+ORDER BY common_name LIMIT 10;
+```
+
+3. Use the SELECT statement in conjunction with REGEXP in the WHERE clause to get a list of birds from the birds table in which the common_name contains the word “Pigeon” or “Dove” (this was covered in “Expressions and the Like” on page 127). Give the field for the common_name column the alias >Type of Columbidae—that’s the name of the family to which Doves and Pigeons belong.
+
+```mysql
+SELECT common_name as 'Type of Columbidae'
+FROM birds
+WHERE common_name REGEXP "Pigeon|Dove"
 ```

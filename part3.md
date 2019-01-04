@@ -97,3 +97,40 @@ WHERE body_shape = 'Woodland Fowl';
 REPLACE INTO bird_body_shapes(body_id, body_shape)
 VALUES('WOF', 'Upland Ground Birds');
 ```
+
+
+#### chapter 7
+
+1. Construct a SELECT statement to select the common names of birds from the birds table. Use the LIKE operator to select only Pigeons from the table. Order the table by the common_name column, but give it a field alias of Bird'. Don’t limit the results; let MySQL retrieve all of the rows that match. Execute the statement on your server and look over the results.
+Next, use the same SELECT statement, but add a LIMIT clause. Limit the results to the first ten rows and execute it. Compare the results to the previous SELECT statement to make sure the results show the 1st through 10th row. Then modify the SELECT statement again to display the next 10 rows. Compare these results to the results from the first SELECT statement to make sure you retrieved the 11th through 20th row. If you didn’t, find your mistake and correct it until you get it right.
+
+```mysql
+SELECT common_name as 'Bird'
+WHERE common_name LIKE '%Pigeon'
+ORDER BY Bird;
+
+SELECT common_name as 'Bird'
+WHERE common_name LIKE '%Pigeon'
+ORDER BY Bird
+LIMIT 10;
+
+SELECT common_name as 'Bird'
+WHERE common_name LIKE '%Pigeon'
+ORDER BY Bird
+LIMIT 20, 10;
+```
+
+2. In this exercise, you’ll begin with a simple SELECT statement and then make it more complicated. To start, construct a SELECT statement in which you select the scientific_name and the brief_description from the bird_orders table. Give the field for the scientific_name an alias of Order—and don’t forget to put quotes around it because it’s a reserved word. Use an alias of Types of Birds in Order for brief_description. Don’t limit the results. When you think that you have the SELECT statement constructed properly, execute it. If you have errors, try to determine the problem and fix the statement until you get it right.
+Construct another SELECT statement in which you retrieve data from the birds table. Select the common_name and the scientific_name columns. Give them field aliases: Common Name of Bird and Scientific Name of Bird. Exclude rows in which the common_name column is blank. Order the data by the common_name column. Limit the results to 25 rows of data. Execute the statement until it works without an error.
+Merge the first and second SELECT statements together to form one SELECT statement that retrieves the same four columns with the same alias from the same two tables (this was covered in “Combining Tables” on page 124). It involves giving more than one table in the FROM clause and providing value pairs in the WHERE clause for temporarily connecting the tables to each other. This one may seem tricky. So take your time and don’t get frustrated. If necessary, refer back to “Combining Tables” on page 124.
+
+```mysql
+SELECT scientific_name AS 'Order', brief_description AS 'Types of Birds'
+FROM bird_orders;
+
+SELECT common_name AS 'Common Name of Bird', scientific_name as 'Scientific Name of Bird'
+FROM birds
+WHERE common_name != ""
+ORDER BY common_name
+LIMIT 25
+```

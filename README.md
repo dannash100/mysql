@@ -256,7 +256,18 @@ FROM
 FROM humans
 GROUP BY name_first, name_last) AS derived_tabled
 WHERE entries > 1;
+
+UPDATE table_to_check, possible_duplicates
+SET possible_duplicate = 1
+WHERE name_first = name_1
+AND name_last = name_2
 ```
+
+uses a subquery to select names and counts number of entries based on the group by clause.
+selects first and last name, groups them so that any rows containing the same first and last names will be grouped together
+they are then counted and given an alias of 'entries' to reference elsewhere.
+main statements where clause selects rows from subquery in which there are more than one entry.
+set possible_duplicates column to 1 where the name in the humans table matches name in the possible_duplicate table.
 
 #### update
 ```mysql

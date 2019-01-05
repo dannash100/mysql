@@ -234,6 +234,30 @@ select:
 SELECT * FROM table WHERE? field = val
 ```
 
+#### handling duplicates
+
+following insert statement
+```mysql
+ON DUPLICATE KEY
+UPDATE is_duplicate = true;
+```
+
+check for duplicates in a DB
+```mysql
+ALTER table_to_check
+ADD COLUMN possible_duplicates TINYINT DEFAULT 0;
+
+CREATE TEMPORARY TABLE possible_duplicates(name_1 varchar(25), name_2 varchar(25));
+
+INSERT INTO possible_duplicates
+SELECT name_first, name_last
+FROM
+(SELECT name_first, name_last, COUNT(*) AS 'entries'
+FROM humans
+GROUP BY name_first, name_last) AS derived_tabled
+WHERE entries > 1;
+```
+
 #### update
 ```mysql
 UPDATE table SET field = val, field = val WHERE id = val;
